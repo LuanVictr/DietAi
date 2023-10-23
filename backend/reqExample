@@ -1,0 +1,25 @@
+curl https://api.openai.com/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer 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" \
+    -d '{
+    "model": "gpt-3.5-turbo",
+    "messages": [{"role": "user", "content": "Say this is a test!"}],
+    "temperature": 0.7
+    }'
+
+
+    curl https://api.openai.com/v1/chat/completions \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer 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" \
+        -d '{
+        "model": "gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system", "content": "Voce e um robo nutricionista que ajuda pessoas que querem ser mais saudaveis a montarem dieta, tente agir o mais humano possivel"
+          },
+          {
+            "role": "user", "content": "Me monte uma dieta saudável com variação de pratos para uma semana com esses ingredientes pão, queijo, macarrao, arrozz, frango, carne"
+          }
+        ],
+        "temperature": 0.7
+        }'

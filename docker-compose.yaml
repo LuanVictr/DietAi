@@ -1,0 +1,37 @@
+version: '3'
+services:
+  frontend:
+    container_name: dietai_frontend
+    build: ./frontend
+    ports:
+      - 3000:3000
+    working_dir: /app-frontend
+    volumes:
+      - ./frontend/src:/app-frontend/src
+    depends_on:
+      - mysql
+
+  backend:
+    container_name: dietai_backend
+    build: ./backend
+    restart: always
+    ports:
+      - 8080:8080
+    working_dir: /app
+    links:
+      - mysql:database
+    environment:
+      MYSQL_USERNAME: dietai
+      MYSQL_PASSWORD: password
+
+  mysql:
+    container_name: dietai_db
+    image: mysql:8.0.32
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: dietai
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: dietaidb
+      MYSQL_ROOT_PASSWORD: admin
